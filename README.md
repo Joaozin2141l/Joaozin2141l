@@ -1,7 +1,7 @@
 <img align="right" height="590em" src="https://raw.githubusercontent.com/gist/lutekdev/e9e072a829b40e319b33b721fbbd6178/raw/a8db23c9a1c4986c1402af4ed6c09ba999d8ffa5/LutekDevCard.svg"/>
 <h1 align="left"> Hello, Developer's <img src="https://c.tenor.com/jjkJrU3wy3kAAAAj/anime-small.gif" alt="drawing" width="45"/> </h1>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=lutekdev&color=blue" alt="Profile views" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=Joaozin2141l&color=blue" alt="Profile views" /> </p>
 
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/JNFzQu7Gy7)
 
@@ -22,7 +22,6 @@
 ## 🎓 &nbsp;Cursando Atualmente;
 - 🎓 Cursando **Área Profissional De TI**;
 - 💵 Cursando **Administração**;
-- 🇺🇸 Cursando **English**;
 - 🤖 Cursando **Progamação**;
 - 💻 Criações de Script **Discord/.js**;
 
@@ -59,10 +58,10 @@
 <!-- <a href="https://linkedin.com/in/lutekdev" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=linkedin" alt="linkedin"/>
 </a> -->
-<a href="https://instagram.com/lutekdev" target="_blank">
+<a href="" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=instagram" alt="instagram"/>
 </a>
-<a href="https://youtube.com/joaozin2141l" target="_blank">
+<a href="https://www.youtube.com/channel/UCqq7GbZziuwC9A81E66Mqag" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=youtube" alt="youtube"/>
 </a>
 </p>
