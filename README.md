@@ -61,7 +61,7 @@
 <a href="" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-Joãodev-05122A?style=flat&logo=instagram" alt="instagram"/>
 </a>
-<a href="https://www.youtube.com/channel/UCqq7GbZziuwC9A81E66Mqag" target="_blank">
+<a href="https://www.youtube.com/@joaozin2141ll" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-Joãodev-05122A?style=flat&logo=youtube" alt="youtube"/>
 </a>
 </p>
