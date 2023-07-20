@@ -5,7 +5,7 @@
 
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/JNFzQu7Gy7)
 
-<h1> <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"> LutekDev <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"></h1>
+<h1> <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"> JoãoDev <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"></h1>
 
 - 📤 Focado em ajudar as pessoas e surpreender o futuro!
 
