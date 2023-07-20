@@ -53,7 +53,7 @@
 <!-- <a href="https://codepen.io/lutekdev" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=codepen" alt="codepen"/>
 </a> -->
-<a href="https://twitter.com/lutekdev" target="_blank">
+<a href="https://twitter.com/Joaozin2141l" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=twitter" alt="twitter"/>  
 </a>
 <!-- <a href="https://linkedin.com/in/lutekdev" target="_blank">
@@ -62,7 +62,7 @@
 <a href="https://instagram.com/lutekdev" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=instagram" alt="instagram"/>
 </a>
-<a href="https://youtube.com/lutekdev" target="_blank">
+<a href="https://youtube.com/joaozin2141l" target="_blank">
  <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=youtube" alt="youtube"/>
 </a>
 </p>
