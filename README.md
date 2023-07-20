@@ -55,7 +55,7 @@
 <a href="https://twitter.com/Joaozin2141l" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=twitter" alt="twitter"/>  
 </a>
-<!-- <a href="https://linkedin.com/in/lutekdev" target="_blank">
+<!-- <a href="https://linkedin.com/in/Joaozin2141l" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=linkedin" alt="linkedin"/>
 </a> -->
 <a href="" target="_blank">
