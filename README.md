@@ -1,4 +1,4 @@
-<img align="right" height="590em" src="https://raw.githubusercontent.com/gist/Joaozin2141l/d0a2080d9f1011950bb23429775558c4/raw/c239bd980e15cad2101991175965cd5f2fa9719a/githubcard.svg"/>
+<img align="right" height="590em" src="https://raw.githubusercontent.com/gist/Joaozin2141l/d0a2080d9f1011950bb23429775558c4/raw/a38bb5c4cc8f64650dcd96a3203ce108a266c1f6/githubcard.svg"/>
 <h1 align="left"> Hello, Developer's <img src="https://c.tenor.com/jjkJrU3wy3kAAAAj/anime-small.gif" alt="drawing" width="45"/> </h1>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=Joaozin2141l&color=blue" alt="Profile views" /> </p>
