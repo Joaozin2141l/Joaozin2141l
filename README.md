@@ -40,7 +40,7 @@
 ## ⚙️ &nbsp;Análise GitHub <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft-parrot.gif" alt="drawing" width="65">
 
 <p align="left">
-<img width="530em" src="https://github-readme-stats.vercel.app/api?username=Joaozin2141l&show_icons=true&theme=vision-friendly-dark" alt="lutekdev's stats"/>
+<img width="530em" src="https://github-readme-stats.vercel.app/api?username=Joaozin2141l&show_icons=true&theme=vision-friendly-dark" alt="joãodev's stats"/>
 <img width="530em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joaozin2141l&layout=compact&theme=vision-friendly-dark" alt="joãodev's most languages"/>
 </p>
 
@@ -49,7 +49,7 @@
 ## 🔮 &nbsp;Redes Sociais Links
 
 <p align="left" style="background:yellow">
-<!-- <a href="https://codepen.io/lutekdev" target="_blank">
+<!-- <a href="https://codepen.io/Joaozin2141l" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=codepen" alt="codepen"/>
 </a> -->
 <a href="https://twitter.com/Joaozin2141l" target="_blank">
