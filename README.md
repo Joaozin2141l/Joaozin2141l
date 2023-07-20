@@ -7,7 +7,7 @@
 
 <h1> <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"> LutekDev <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft.gif" alt="drawing" width="45"></h1>
 
-- 📤 Focado em ajudar as pessoas a começar a programar!
+- 📤 Focado em ajudar as pessoas e surpreender o futuro!
 
 - 💬 Pergunte-me sobre **JavaScript, HTML, CSS, PHP, Node.JS, C, C++**
 
@@ -15,23 +15,16 @@
 
 - 😄 Pronomes: **Ele/Dele**
  
-- ⚡ Fato engraçado **Lutekin 😜**
+- ⚡ Fato engraçado **Joaozin 😜**
 
 - ☕ Não é falta de cafe, nem tequila. é meu código que não copila.
 
 ## 🎓 &nbsp;Cursando Atualmente;
-- 🎓 Cursando **Ciências da Computação**;
+- 🎓 Cursando **Área Profissional De TI**;
 - 💵 Cursando **Administração**;
-- ⚖ Conhecendo sobre **Direito**;
 - 🇺🇸 Cursando **English**;
-- 🤖 Cursando **Automação**;
-- 💻 Criações de Plugins **Java/MCPE**;
-
-## 💼 &nbsp;Projetos Atuais;
-- 💼 Atualmente estou trabalhando no meu **Fórum**;
-- 🔭 Atualmente estou trabalhando na **PocketMine-MP** (https://github.com/pmmp/PocketMine-MP);
-- 🌑 Atualmente estou trabalhando na **Comunidade LutekDev** (https://discord.gg/JNFzQu7Gy7);
-- 📡 Atualmente estou trabalhando e conhecendo sobre **Telecomunicações / Internet**;
+- 🤖 Cursando **Progamação**;
+- 💻 Criações de Script **Discord/.js**;
 
 ## 🛠 &nbsp;Conhecimentos
 
