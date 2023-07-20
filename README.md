@@ -53,16 +53,16 @@
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=codepen" alt="codepen"/>
 </a> -->
 <a href="https://twitter.com/Joaozin2141l" target="_blank">
-  <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=twitter" alt="twitter"/>  
+  <img align="center" src="https://img.shields.io/badge/-JoãoDev-05122A?style=flat&logo=twitter" alt="twitter"/>  
 </a>
 <!-- <a href="https://linkedin.com/in/Joaozin2141l" target="_blank">
   <img align="center" src="https://img.shields.io/badge/-maykbrito-05122A?style=flat&logo=linkedin" alt="linkedin"/>
 </a> -->
 <a href="" target="_blank">
- <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=instagram" alt="instagram"/>
+ <img align="center" src="https://img.shields.io/badge/-Joãodev-05122A?style=flat&logo=instagram" alt="instagram"/>
 </a>
 <a href="https://www.youtube.com/channel/UCqq7GbZziuwC9A81E66Mqag" target="_blank">
- <img align="center" src="https://img.shields.io/badge/-lutekdev-05122A?style=flat&logo=youtube" alt="youtube"/>
+ <img align="center" src="https://img.shields.io/badge/-Joãodev-05122A?style=flat&logo=youtube" alt="youtube"/>
 </a>
 </p>
 <img src="https://phoneky.co.uk/thumbs/screensavers/down/anime/naruto_i758k6zm.gif" alt="drawing" width="350"/>
