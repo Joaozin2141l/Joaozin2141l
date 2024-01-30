@@ -16,7 +16,7 @@
 
 - 😄 Pronomes: **Ele/Dele**
  
-- ⚡ Fato engraçado **Joaozin 😜**
+- ⚡ Fato engraçado **Orochi 😜**
 
 - ☕ Não é falta de cafe, nem tequila. é meu código que não copila.
 
