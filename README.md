@@ -41,8 +41,8 @@
 ## ⚙️ &nbsp;Análise GitHub <img src="https://github.com/ppaalo/ppaalo/raw/main/assets/minecraft-parrot.gif" alt="drawing" width="65">
 
 <p align="left">
-<img width="530em" src="https://github-readme-stats.vercel.app/api?username=Joaozin2141l&show_icons=true&theme=vision-friendly-dark" alt="✞João⭐⟠ stats"/>
-<img width="530em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joaozin2141l&layout=compact&theme=vision-friendly-dark" alt="joãodev's most languages"/>
+<img width="530em" src="https://github-readme-stats.vercel.app/api?username=Joaozin2141l&show_icons=true&theme=vision-friendly-dark" alt="Joaozin2141l stats"/>
+<img width="530em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Joaozin2141l&layout=compact&theme=vision-friendly-dark" alt="Joaozin2141l most languages"/>
 </p>
 
 <br><br>
