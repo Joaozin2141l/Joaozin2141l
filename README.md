@@ -20,8 +20,8 @@
 - ☕ Não é falta de cafe, nem tequila. é meu código que não copila.
 
 ## 🎓 &nbsp;Cursando Atualmente;
-- 🎓 Cursando **Área Profissional De TI**;
-- 💵 Cursando **Administração**;
+- 🎓 Cursando **Área De TI**;
+- 💵 Cursando **Eletronica**;
 - 🤖 Cursando **Progamação**;
 - 💻 Criações de Script **Discord/.js**;
 
