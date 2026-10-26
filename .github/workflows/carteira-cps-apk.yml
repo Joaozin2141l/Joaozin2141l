@@ -1,0 +1,40 @@
+name: Carteira CPS - compilar APK
+on:
+  push:
+    branches:
+      - carteira-cps-apk
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Expandir projeto
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import tarfile,base64,lzma,io,pathlib
+          contents=pathlib.Path("carteira-cps-source.tar.xz.b64").read_text().strip()
+          raw=lzma.decompress(base64.b64decode(contents))
+          with tarfile.open(fileobj=io.BytesIO(raw),mode="r:") as tf:
+              tf.extractall("android",filter="data")
+          print("Arquivos Android extraídos")
+          PY
+      - name: Compilar APK debug
+        working-directory: android
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Carteira-CPS-APK-debug
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
