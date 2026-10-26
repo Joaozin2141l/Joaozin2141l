@@ -1,8 +1,7 @@
-name: Carteira CPS - compilar APK
+name: Carteira CPS v8 - APK com site e icone
 on:
   push:
-    branches:
-      - carteira-cps-apk
+    branches: [carteira-cps-apk]
   workflow_dispatch:
 jobs:
   build:
@@ -23,33 +22,32 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
-      - name: Expandir projeto
-        shell: bash
+      - name: Extrair site e projeto Android
         run: |
           python3 - <<'PY'
-          import tarfile,base64,lzma,io,pathlib
-          contents=pathlib.Path("carteira-cps-source.tar.xz.b64").read_text().strip()
-          raw=lzma.decompress(base64.b64decode(contents))
-          with tarfile.open(fileobj=io.BytesIO(raw),mode="r:") as tf:
-              tf.extractall("android",filter="data")
-          from pathlib import Path
-          xml = Path("android/app/src/main/res/xml/apduservice.xml")
-          val = xml.read_text()
-          val = val.replace('android:description="Carteira CPS experimental"', 'android:description="@string/nfc_service_description"')
-          val = val.replace('android:description="Cartão CPS (teste ISO-DEP)"', 'android:description="@string/nfc_group_description"')
-          xml.write_text(val)
-          strings = Path("android/app/src/main/res/values/strings.xml")
-          strings.parent.mkdir(parents=True, exist_ok=True)
-          strings.write_text('<?xml version="1.0" encoding="utf-8"?><resources><string name="nfc_service_description">Carteira CPS experimental</string><string name="nfc_group_description">Cartão CPS teste ISO DEP</string></resources>')
-          gradle = Path("android/app/build.gradle.kts")
-          gradle.write_text(gradle.read_text().replace("firebase-bom:35.0.2", "firebase-bom:33.14.0"))
-          print("Arquivos Android extraídos, XML de NFC e versões do Firebase corrigidos")
+          import pathlib,tarfile,lzma,base64,io
+          p=pathlib.Path('carteira-cps-v8-source.tar.xz.b64')
+          raw=lzma.decompress(base64.b64decode(p.read_text().strip()))
+          with tarfile.open(fileobj=io.BytesIO(raw),mode='r:') as tf:
+              tf.extractall('android',filter='data')
+          icon=pathlib.Path('android/build_assets.py')
+          src=icon.read_text()
+          src=src.replace("font=ImageFont.truetype('/usr/share/fonts/truetype/lato/Lato-Heavy.ttf',142)","font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',142)")
+          icon.write_text(src)
+          print('Projeto preparado.')
           PY
+      - name: Gerar icones Android e Web
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 android/build_assets.py
+          cp android/app/src/main/assets/icon-192.png android/site/icon-192.png
+          cp android/app/src/main/assets/icon-512.png android/site/icon-512.png
       - name: Compilar APK debug
         working-directory: android
-        run: gradle --no-daemon --stacktrace :app:assembleDebug
-      - uses: actions/upload-artifact@v4
+        run: gradle --no-daemon :app:assembleDebug
+      - name: Publicar APK
+        uses: actions/upload-artifact@v4
         with:
-          name: Carteira-CPS-APK-debug
+          name: Carteira-CPS-v8-APK
           path: android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
