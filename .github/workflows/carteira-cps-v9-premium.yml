@@ -1,0 +1,85 @@
+name: Carteira CPS v9 Premium - APK
+on:
+  push:
+    branches: [carteira-cps-premium-v9]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools'
+      - name: Preparar SDK Android 35
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Montar projeto e interface premium
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import base64, gzip, tarfile, lzma, io
+          archive = lzma.decompress(base64.b64decode(Path('carteira-cps-v8-source.tar.xz.b64').read_text().strip()))
+          with tarfile.open(fileobj=io.BytesIO(archive),mode='r:') as tf:
+              tf.extractall('android',filter='data')
+          root = Path('android')
+          assets = root/'app/src/main/assets'
+          site = root/'site'
+          site.mkdir(exist_ok=True)
+          html = gzip.decompress(base64.b64decode(Path('carteira-cps-v9-ui.html.gz.b64').read_text().strip()))
+          (assets/'index.html').write_bytes(html)
+          (site/'index.html').write_bytes(html)
+          imgbytes = base64.b64decode(Path('carteira-cps-v9-cps-icon-192.png.b64').read_text().strip())
+          orig = Image.open(io.BytesIO(imgbytes)).convert('RGBA')
+          for size in [192,512]:
+              image=orig.resize((size,size),Image.Resampling.LANCZOS)
+              image.save(assets/f'icon-{size}.png',optimize=True)
+              image.save(site/f'icon-{size}.png',optimize=True)
+          for folder, size in [('mdpi',48),('hdpi',72),('xhdpi',96),('xxhdpi',144),('xxxhdpi',192)]:
+              path=root/f'app/src/main/res/mipmap-{folder}'
+              path.mkdir(parents=True,exist_ok=True)
+              im=orig.resize((size,size),Image.Resampling.LANCZOS)
+              for filename in ['ic_launcher.png','ic_launcher_round.png']:
+                  im.save(path/filename,optimize=True)
+          manifest='{"name":"Carteira Digital CPS","short_name":"Carteira CPS","description":"Carteira institucional digital do projeto TCC","start_url":"./index.html","scope":"./","display":"standalone","background_color":"#071015","theme_color":"#071015","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}'
+          (assets/'manifest.webmanifest').write_text(manifest)
+          (site/'manifest.webmanifest').write_text(manifest)
+          sw=(assets/'sw.js').read_text().replace('carteira-cps-shell-v8','carteira-cps-shell-v9')
+          (assets/'sw.js').write_text(sw)
+          (site/'sw.js').write_text(sw)
+          main = root/'app/src/main/java/br/edu/tcc/carteiracps/MainActivity.kt'
+          k=main.read_text()
+          k=k.replace('import android.app.Activity','import android.app.Activity\nimport android.graphics.Color')
+          k=k.replace('        auth = FirebaseAuth.getInstance()', '''        window.statusBarColor = Color.rgb(7, 16, 21)
+                  window.navigationBarColor = Color.rgb(7, 16, 21)
+                  @Suppress("DEPRECATION")
+                  window.decorView.systemUiVisibility = 0
+                  auth = FirebaseAuth.getInstance()''')
+          k=k.replace('            settings.javaScriptEnabled = true', '            setBackgroundColor(Color.rgb(7, 16, 21))\n            settings.javaScriptEnabled = true')
+          main.write_text(k)
+          gradle = root/'app/build.gradle.kts'
+          g=gradle.read_text().replace('versionCode = 8', 'versionCode = 9').replace('versionName = "8.0-webapp"','versionName = "9.0-premium"')
+          gradle.write_text(g)
+          print('Premium UI, CPS logo, Firebase Android e site PWA montados.')
+          PY
+      - name: Compilar APK v9
+        working-directory: android
+        run: gradle --no-daemon --stacktrace :app:assembleDebug
+      - name: Validar arquivo APK
+        run: test -s android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Publicar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Carteira-CPS-v9-Premium-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
