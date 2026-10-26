@@ -32,7 +32,16 @@ jobs:
           raw=lzma.decompress(base64.b64decode(contents))
           with tarfile.open(fileobj=io.BytesIO(raw),mode="r:") as tf:
               tf.extractall("android",filter="data")
-          print("Arquivos Android extraídos")
+          from pathlib import Path
+          xml = Path("android/app/src/main/res/xml/apduservice.xml")
+          val = xml.read_text()
+          val = val.replace('android:description="Carteira CPS experimental"', 'android:description="@string/nfc_service_description"')
+          val = val.replace('android:description="Cartão CPS (teste ISO-DEP)"', 'android:description="@string/nfc_group_description"')
+          xml.write_text(val)
+          strings = Path("android/app/src/main/res/values/strings.xml")
+          strings.parent.mkdir(parents=True, exist_ok=True)
+          strings.write_text('<?xml version="1.0" encoding="utf-8"?><resources><string name="nfc_service_description">Carteira CPS experimental</string><string name="nfc_group_description">Cartão CPS teste ISO DEP</string></resources>')
+          print("Arquivos Android extraídos e XML de NFC corrigido")
           PY
       - name: Compilar APK debug
         working-directory: android
