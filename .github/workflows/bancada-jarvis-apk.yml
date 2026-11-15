@@ -20,6 +20,7 @@ jobs:
         run: |
           base64 --decode Bancada_Jarvis_Android/source.tar.xz.b64 | tar -xJf -
           test -f Bancada_Jarvis_Android/app/src/main/java/com/bancada/jarvis/MainActivity.java
+          sed -i 's/import android.app.PrintManager;/import android.print.PrintManager;/' Bancada_Jarvis_Android/app/src/main/java/com/bancada/jarvis/MainActivity.java
 
       - name: Configurar Java 17
         uses: actions/setup-java@v4
