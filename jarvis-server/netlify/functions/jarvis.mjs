@@ -51,16 +51,32 @@ export default async function handler(request){
     const quota=await reserveQuota(store,'calls-'+dayKey(),dailyCap());
     if(!quota.allowed)return response(429,{error:quota.error||'Cota pública diária do Jarvis atingida. Volte amanhã.'},origin);
   }catch(e){console.error('Quota unavailable',e?.name||'error');return response(503,{error:'Controle de cota indisponível. O Jarvis foi pausado para proteger a chave da IA.'},origin)}
-  const model=clean(process.env.GEMINI_MODEL||'gemini-2.5-flash',64).replace(/[^a-zA-Z0-9._-]/g,'');
+  const model=clean(process.env.GEMINI_MODEL||'gemini-3.5-flash-lite',64).replace(/[^a-zA-Z0-9._-]/g,'');
+  // Para projetos novos, Gemini 2.5 pode retornar 404.
+  const candidateModels=[model,...(model==='gemini-3.1-flash-lite'?[]:['gemini-3.1-flash-lite'])];
   const c=new AbortController();const t=setTimeout(()=>c.abort(),20000);
   try{
-    const reply=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,{
-      method:'POST',signal:c.signal,headers:{'Content-Type':'application/json','x-goog-api-key':process.env.GEMINI_API_KEY},
-      body:JSON.stringify({systemInstruction:{parts:[{text:SYSTEM+'\nContexto técnico, não confirmado: '+clean(JSON.stringify(ctx||{}),6000)}]},
-        contents:[...hist,{role:'user',parts:[{text:message},...(image?[image]:[])]}],generationConfig:{temperature:.25,maxOutputTokens:1100}})
-    });
-    const data=await reply.json().catch(()=>({}));
-    if(!reply.ok){const err=reply.status===429?'A cota do Gemini foi atingida.':reply.status===404?'Modelo Gemini indisponível.':'A API do Gemini retornou erro ('+reply.status+').';return response(502,{error:err},origin)}
+    const payload={systemInstruction:{parts:[{text:SYSTEM+'\nContexto técnico, não confirmado: '+clean(JSON.stringify(ctx||{}),6000)}]},
+      contents:[...hist,{role:'user',parts:[{text:message},...(image?[image]:[])]}],
+      generationConfig:{temperature:.25,maxOutputTokens:1100}};
+    let data;
+    let lastStatus=404;
+    for(const name of candidateModels){
+      const reply=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${name}:generateContent`,{
+        method:'POST',signal:c.signal,headers:{'Content-Type':'application/json','x-goog-api-key':process.env.GEMINI_API_KEY},
+        body:JSON.stringify(payload)
+      });
+      data=await reply.json().catch(()=>({}));
+      lastStatus=reply.status;
+      if(reply.ok)break;
+      if(reply.status===404){console.warn('Modelo Gemini não acessível neste projeto:',name);continue;}
+      if(reply.status===429)return response(429,{error:'A cota do Gemini foi atingida. Confira os limites do Google AI Studio.'},origin);
+      if(reply.status===403)return response(502,{error:'A chave Gemini não tem permissão para este modelo. Confira as restrições da API.'},origin);
+      if(reply.status===400)return response(502,{error:'O Gemini recusou os parâmetros desta chamada. Verifique o modelo configurado.'},origin);
+      console.error('Erro HTTP do Gemini:',reply.status);
+      return response(502,{error:'A API do Gemini retornou erro ('+reply.status+').'},origin);
+    }
+    if(lastStatus===404)return response(502,{error:'Nenhum modelo Gemini liberado para esta chave. Confira GEMINI_MODEL no Netlify ou o acesso a modelos no Google AI Studio.'},origin);
     const answer=(data?.candidates?.[0]?.content?.parts||[]).map(x=>x.text||'').join('\n').trim();
     if(!answer)return response(502,{error:'A IA não retornou uma resposta.'},origin);
     return response(200,{answer},origin);
